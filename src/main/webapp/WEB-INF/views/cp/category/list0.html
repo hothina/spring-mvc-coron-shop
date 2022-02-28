@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Startmin - Bootstrap Admin Theme</title>
+    <th:block th:replace="cp/layout/head :: head"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="table-title">
+        <div class="row">
+
+        </div>
+    </div>
+
+    <table class="table table-hover" id="tblCustomer">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+
+            <th scope="col" class="text-center" colspan="3">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="category : ${categories}">
+            <tr th:id="${'tr_' + category.id}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+
+
+
+                <td class="text-center">
+                    <a class="btn btn-outline-secondary edit" th:href="@{/cp/category/edit/__${category.id}__}">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-outline-danger" th:href="@{/delete/__${category.id}__}">
+                        <i class="fa fa-ban"></i>
+                    </a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+
+</html>

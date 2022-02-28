@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Startmin - Bootstrap Admin Theme</title>
+    <th:block th:replace="cp/layout/head :: head"/>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <th:block th:replace="cp/layout/navbar :: navbar"/>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Add new Product</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!--               Content of page-->
+                <div class="col-lg-12">
+                    <form method="post" th:object="${product}" enctype="multipart/form-data">
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-6">
+                                <label>Name</label>
+                                <input type="text" class="form-control" th:field="*{name}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Category Group</label>
+                                <select class="form-control" th:field="*{categoryGroup}">
+                                    <th:block th:each="item : ${categoryGroups}">
+                                        <option th:value="${item.id}" th:text="${item.name}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-6">
+                                <label>Price</label>
+                                <input type="number" class="form-control" th:field="*{price}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Quantity</label>
+                                <input type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-6">
+                                <label>Description</label>
+                                <input type="text" class="form-control" th:field="*{description}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Avatar</label>
+                                <input type="file" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-default">Create</button>
+                                <a href="/cp/products">
+                                    <button type="button" class="btn btn-primary">Back to list</button>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<th:block th:replace="cp/layout/script :: script"/>
+
+</body>
+</html>

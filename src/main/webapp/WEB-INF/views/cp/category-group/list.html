@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Startmin - Bootstrap Admin Theme</title>
+    <th:block th:replace="cp/layout/head :: head"/>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <th:block th:replace="cp/layout/navbar :: navbar"/>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">List of category group</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!--               Content of page-->
+                <table class="table table-hover" id="tblCustomer">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category Name</th>
+                        <th scope="col" class="text-center" colspan="2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="item : ${categoryGroups}">
+                        <tr th:id="${'tr_' + item.id}">
+                            <td th:text="${item.id}"></td>
+                            <td th:text="${item.name}"></td>
+                            <td th:text="${item.category.name}"></td>
+                            <td class="text-center">
+                                <a class="btn btn-outline-secondary edit" th:href="@{/cp/category-group/edit/__${item.id}__}">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-outline-danger" th:href="@{/cp/category-group/delete/__${item.id}__}">
+                                    <i class="fa fa-ban"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<th:block th:replace="cp/layout/script :: script"/>
+
+</body>
+</html>
