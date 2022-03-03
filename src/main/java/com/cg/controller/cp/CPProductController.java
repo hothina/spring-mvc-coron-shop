@@ -99,7 +99,6 @@ public class CPProductController {
             streamLocal.close();
 
             product.setAvatar(fileName);
-
             productService.save(product);
         } catch (IOException e) {
             e.printStackTrace();
