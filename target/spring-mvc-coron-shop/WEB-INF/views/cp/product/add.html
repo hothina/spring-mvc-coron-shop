@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Quantity</label>
-                                <input type="number" class="form-control">
+                                <input type="number" class="form-control" th:field="*{quantity}">
                             </div>
                         </div>
                         <div class="row col-md-12">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Avatar</label>
-                                <input type="file" class="form-control">
+                                <input type="file" class="form-control" th:field="${productForm.fileImage}">
                             </div>
                         </div>
                         <div class="row col-md-12">
